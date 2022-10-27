@@ -1,6 +1,7 @@
 {
   "name": "a-vue-nft-app",
   "version": "0.0.1",
+  "main": "main.js",
   "private": true,
   "author": {
     "name": "murat"
@@ -36,13 +37,13 @@
   },
   "dependencies": {
     "@burner-wallet/burner-connect-provider": "^0.1.1",
-    "assert": "^2.0.0",
+    "@ethereumjs/util": "^8.0.2",
     "authereum": "^0.1.14",
+    "buffer": "^6.0.3",
     "core-js": "^3.8.3",
-    "ethers": "^5.0.1",
-    "ipfs-core": "^0.16.0",
-    "stream": "^0.0.2",
-    "stream-browserify": "^3.0.0",
+    "ethers": "^5.7.2",
+    "ipfs-core": "^0.17.0",
+    "process": "^0.11.10",
     "util": "^0.12.5",
     "vue": "^3.0.4",
     "vue-gravatar": "^1.4.1",
@@ -59,10 +60,12 @@
     "@vue/cli-plugin-eslint": "~5.0.0-beta.3",
     "@vue/cli-service": "~5.0.0-beta.3",
     "@vue/compiler-sfc": "^3.0.4",
+    "babel-eslint": "^10.1.0",
     "eslint": "^8.7.0",
     "eslint-plugin-vue": "^8.2.0",
     "playwright": "^1.12.3",
     "rimraf": "^3.0.2",
-    "test-util-ipfs-example": "^1.0.2"
+    "test-util-ipfs-example": "^1.0.2",
+    "vue-template-compiler": "^2.6.11"
   }
 }
