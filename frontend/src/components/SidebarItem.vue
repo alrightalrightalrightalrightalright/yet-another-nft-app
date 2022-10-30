@@ -21,7 +21,6 @@
             </a>
           </li>
         </router-link>
-
         <router-link v-if="isUserConnected" to="/profile" style="text-decoration: none">
           <li class="nav-item">
             <a class="nav-link" :class="{active:this.$route.name === 'profile'}" href="/profile">

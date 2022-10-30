@@ -1,57 +1,40 @@
-import { ethers } from "ethers";
-import Calc from "../../contracts/Calc.json";
+// import { ethers } from "ethers";
+import Contract from "../../contracts/SwaggNFT.json";
 import addresses from "../../contracts/addresses.json";
 
 const state = {
   num: 0,
-  calcAbi: null,
-  calcAddress: null
+  contractAbi: null,
+  contractAddress: null
 };
 
 const getters = {
-  getNum(state) {
-    return state.num;
+  getContractAbi(state) {
+    return state.contractAbi;
   },
-  getCalcAbi(state) {
-    return state.calcAbi;
+  getContractAddress(state) {
+    return state.contractAddress;
   },
-  getCalcAddress(state) {
-    return state.calcAddress;
-  }
 };
 
 const actions = {
-  async fetchNum({ commit, rootState }) {
-    let provider = rootState.accounts.providerEthers;
-    let chainIdDec = parseInt(rootState.accounts.chainId);
-    let calcAddress = addresses.Calc[chainIdDec];
-
-    let contract = new ethers.Contract(calcAddress, Calc.abi, provider);
-
-    let num = await contract.getNum();
-
-    commit("setNum", num);
+  storeContractAbi({ commit }) {
+    commit("setContractAbi", Contract.abi);
   },
-  storeCalcAbi({commit}) {
-    commit("setCalcAbi", Calc.abi);
-  },
-  storeCalcAddress({ commit, rootState }) {
+  storeContractAddress({ commit, rootState }) {
     let chainIdDec = parseInt(rootState.accounts.chainId);
-    let calcAddress = addresses.Calc[chainIdDec];
+    let contractAddress = addresses.SwaggNFT[chainIdDec];
 
-    commit("setCalcAddress", calcAddress);
+    commit("setContractAddress", contractAddress);
   }
 };
 
 const mutations = {
-  setNum(state, _num) {
-    state.num = _num;
+  setContractAbi(state, abi) {
+    state.contractAbi = abi;
   },
-  setCalcAbi(state, abi) {
-    state.calcAbi = abi;
-  },
-  setCalcAddress(state, address) {
-    state.calcAddress = address;
+  setContractAddress(state, address) {
+    state.contractAddress = address;
   }
 };
 

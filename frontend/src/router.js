@@ -6,12 +6,13 @@ import ProfilePage from './pages/ProfilePage.vue'
 const routes = [
     {
         path: "/",
-        name: "HelloWorld",
-        component: HelloWorld
-    }, {
-        path: "/swaggg",
         name: "home",
         component: HomePage
+    },
+    {
+        path: "/hello",
+        name: "hello",
+        component: HelloWorld
     },
     {
         path: "/mint-nft",
@@ -26,6 +27,7 @@ const routes = [
 ]
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
+    linkActiveClass: "active",
     routes
 })
 export default router

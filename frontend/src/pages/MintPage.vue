@@ -86,43 +86,38 @@ export default {
   name: "MintPage",
   computed: {
     ...mapGetters("accounts", ["getActiveAccount", "getProviderEthers"]),
-    ...mapGetters("contracts", ["getNum", "getCalcAbi", "getCalcAddress"]),
+    ...mapGetters("contracts", ["getContractAbi", "getContractAddress"]),
   },
   created() {
-    this.$store.dispatch("contracts/fetchNum");
-    this.$store.dispatch("contracts/storeCalcAbi");
-    this.$store.dispatch("contracts/storeCalcAddress");
+    this.$store.dispatch("contracts/storeContractAbi");
+    this.$store.dispatch("contracts/storeContractAddress");
 
     // if web3 provider has not been yet loaded, redirect to root
     if (!this.getProviderEthers) {
       document.location.href = "/";
     } else {
-      // get the contract instance
       let signer = this.getProviderEthers.getSigner();
       this.contract = new ethers.Contract(
-        this.getCalcAddress,
-        this.getCalcAbi,
+        this.getContractAddress,
+        this.getContractAbi,
         signer
       );
-      let component = this;
-
-      // set event listener
-      this.contract.on("NumberSet", (_from, value) => {
-        // show a toast
-        component.$toasted.show("The new number has been set to " + value, {
-          type: "success",
-          duration: 5000,
-          theme: "bubble",
-          position: "top-center",
-        });
-
-        // refresh the num value
-        component.$store.dispatch("contracts/fetchNum");
-      });
+      // let component = this;
+      // // set event listener
+      // this.contract.on("OwnershipTransferred", (_from, value) => {
+      //   component.$toasted.show("nft minted?  " + value, {
+      //     type: "success",
+      //     duration: 5000,
+      //     theme: "bubble",
+      //     position: "top-center",
+      //   });
+      //   // refresh the num value
+      //   // component.$store.dispatch("contracts/fetchNum");
+      // });
     }
   },
   mounted: function () {
-    this.getIpfsNodeInfo();
+    // this.getIpfsNodeInfo();
   },
   data() {
     return {
@@ -140,7 +135,7 @@ export default {
       try {
         // Await for ipfs node instance.
         const ipfs = await this.$ipfs;
-        console.log('bak', ipfs)
+        console.log("bak", ipfs);
         // Call ipfs `id` method.
         // Returns the identity of the Peer.
         const { agentVersion, id } = await ipfs.id();
@@ -149,15 +144,30 @@ export default {
         // Set successful status text.
         this.status = "Connected to IPFS =)";
         this.online = ipfs.isOnline();
-        console.log('ayoo succ')
+        console.log("ayoo succ");
       } catch (err) {
         // Set error status text.
         this.status = `Error: ${err}`;
-        console.log('ipfs err', err)
+        console.log("ipfs err", err);
       }
     },
     async onSubmit() {
-      await this.contract.setNum(this.newValue);
+      console.log("minting bruh: ", this.getActiveAccount);
+      console.log("con adres: ", this.getContractAddress);
+      console.log("con abi: ", this.getContractAbi);
+      // let signer = this.getProviderEthers.getSigner();
+      // var swagg = new ethers.Contract(
+      //   this.getContractAddress,
+      //   this.getContractAbi,
+      //   signer
+      // );
+      var asdsa = await this.contract.symbol();
+      console.log("asssssssssssss", asdsa);
+
+      // var asd = await this.contract.name();
+      // await this.contract.wait()
+      // console.log("aq ", asd);
+      // await this.contract.payToMint(this.getActiveAccount, "asdasd");
     },
     async onFileChange(e) {
       const file = e.target.files[0];

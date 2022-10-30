@@ -11,6 +11,10 @@ module.exports = {
     hardhat: {
       chainId: 1337
     },
+    localhost: {
+      url: "http://localhost:8545",
+      chainId: 1337
+    },
     ganache: {
       url: "http://127.0.0.1:12322/",
       saveDeployments: true
