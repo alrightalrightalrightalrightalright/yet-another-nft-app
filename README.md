@@ -7,8 +7,7 @@ Simple NFT minting app using Vue and IPFS.
 ### Clone the repo:
 
 ```cmd
-git clone https://github.com/alrightalrightalrightalrightalright/a-vue-nft-app
-cd a-vue-nft-app
+git clone https://github.com/alrightalrightalrightalrightalright/yet-another-nft-app && cd yet-another-nft-app
 ```
 
 ### Install dependencies
