@@ -1,6 +1,6 @@
-# A Very Basic Vue NFT App
+# A Basic Vue NFT App
 
-Very simple NFT minting app using Vue and IPFS.
+Simple NFT minting app using Vue and IPFS.
 
 # Usage
 
@@ -11,15 +11,14 @@ git clone https://github.com/alrightalrightalrightalrightalright/a-vue-nft-app
 cd a-vue-nft-app
 ```
 
-### Run Frontend
+### Install dependencies
 
 ```cmd
-cd frontend && npm run serve
+npm i --legacy-peer-deps
 ```
 
-
 ### Start Node
-##
+Use a new terminal in this step
 ```bash
 npx hardhat node
 ```
@@ -28,4 +27,10 @@ npx hardhat node
 
 ```bash
 npx hardhat run scripts/deploy.js --network localhost
+```
+
+### Run Frontend
+
+```cmd
+npm run serve
 ```

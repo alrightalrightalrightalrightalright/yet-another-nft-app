@@ -1,3 +1,6 @@
+.DS_Store
+node_modules
+/dist
 #Hardhat files
 /cache
 /artifacts
@@ -11,15 +14,26 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# local env files
+.env.local
 node_modules
 dist
 dist-ssr
 *.local
 .env
+package-lock.json
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 .idea
 .DS_Store
 *.suo
